@@ -36,9 +36,10 @@
 </head>
 <body>
     <nav>
-        <a href="/#home">MARIA RAMOS ARQUITETURA</a>
+        <a class="no_smart" href="/#home">MARIA RAMOS ARQUITETURA</a>
         <ul>
             <li><a href="#home">HOME</a></li>
+            <li><a href="#projetos">PROJETOS</a></li>
             <li><a href="#perfil">PERFIL</a></li>
             <li><a href="#servicos">SERVIÇOS</a></li>
             <li><a href="#contato">CONTATO</a></li>
@@ -49,6 +50,22 @@
         <div id="home">
             <img src="logo.png" alt="Logotipo do site Maria Ramos Arquitetura e Paisagismo">
 
+        </div>
+        <div id="projetos">
+            <h2><div class="vline"></div><span>Projetos</span></h2>
+            <a class="projeto" onclick="showModal('apartamento-sandra',6)">
+                <img src="images/apartamento-sandra/capa.jpg" />
+                <div class="projeto-desc">Apartamento Sandra</div>
+            </a>
+            <a class="projeto" onclick="showModal('quarto-mariana',5)">
+                <img src="images/quarto-mariana/capa.jpg" />
+                <div class="projeto-desc">Quarto Mariana</div>
+            </a>
+            <a class="projeto" onclick="showModal('quarto-joaquim',3)">
+                <img src="images/quarto-joaquim/capa.jpg" />
+                <div class="projeto-desc">Quarto Joaquim</div>
+            </a>
+            
         </div>
         <div id="perfil">
             <h2><div class="vline"></div><span>Sobre mim</span></h2>
@@ -65,6 +82,7 @@
                 <li><i class="fas fa-hard-hat fa-2x"></i><p>Projeto arquitetônico residencial</p></li>
             </ul>
         </div>
+        
             
         <div id="contato">
             <h2><div class="vline"></div><span>Entre em contato</span></h2>
@@ -83,6 +101,36 @@
             </div>          
         </div>   
 
-    </footer>  
+    </footer> 
+    <div id="fundo_escurecido" onclick="fecharModal()"></div>
+    <div id="projetos_modal">
+        <i id="fechar_modal" class="fas fa-2x fa-times" onclick="fecharModal()"></i>
+        <div id="fotos"></div>
+    </div>
+    <script>
+        function showModal(pasta,quantidade) {
+            window.scrollTo(0, 0);
+            document.body.style.overflow = 'hidden';
+            document.getElementById('fundo_escurecido').style.display = 'block';
+            document.getElementById('projetos_modal').style.display = 'block';
+            const fotos = document.getElementById('fotos');
+            fotos.innerHTML = '';
+            for(let i =0 ; i < quantidade; i++){
+                const image = document.createElement('img');
+                if ( i == 0 ){
+                    image.src = '/images/'+pasta+'/capa.jpg';
+                }else{
+                    image.src = '/images/'+pasta+'/'+i+'.jpg';
+                }
+                fotos.append(image);
+            }
+        }
+
+        function fecharModal(){
+            document.body.style.overflow = 'visible';
+            document.getElementById('fundo_escurecido').style.display = 'none';
+            document.getElementById('projetos_modal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
